@@ -12,9 +12,9 @@ def main(args):
     encoding = 'interarrival' if args.interarrival else 'arrival'
     print('Tokenizing POP909')
     print(f'  encoding type: {encoding}')
-    # print(f'  train split: {[s for s in LAKH_SPLITS if s not in LAKH_VALID + LAKH_TEST]}')
-    # print(f'  validation split: {LAKH_VALID}')
-    # print(f'  test split: {LAKH_TEST}')
+    # print(f'  train split: {[s for s in POP909_SPLITS if s not in POP909_VALID + POP909_TEST]}')
+    # print(f'  validation split: {POP909_VALID}')
+    # print(f'  test split: {POP909_TEST}')
 
     print('Tokenization parameters:')
     print(f'  anticipation interval = {DELTA}s')
@@ -23,18 +23,18 @@ def main(args):
     print(f'  min track length = {MIN_TRACK_TIME_IN_SECONDS}s')
     print(f'  min track events = {MIN_TRACK_EVENTS}')
 
-    paths = [os.path.join(args.datadir, s) for s in LAKH_SPLITS]
-    files = [glob(f'preprocessed_midis/*.compound.txt')]
-    outputs = [os.path.join(args.datadir, f'tokenized-events-{s}.txt') for s in LAKH_SPLITS]
+    paths = [os.path.join(args.datadir, s) for s in POP909_SPLITS]
+    files = [glob(f'{p}/*.compound.txt') for p in paths]
+    outputs = [os.path.join(args.datadir, f'tokenized-events-{s}.txt') for s in POP909_SPLITS]
 
     # don't augment the valid/test splits
-    augment = [1 if s in LAKH_VALID or s in LAKH_TEST else args.augment for s in LAKH_SPLITS]
+    augment = [1 if s in POP909_VALID or s in POP909_TEST else args.augment for s in POP909_SPLITS]
 
     # parallel tokenization drops the last chunk of < M tokens
     # if concerned about waste: process larger groups of datafiles
     func = tokenize_ia if args.interarrival else tokenize
     with Pool(processes=PREPROC_WORKERS, initargs=(RLock(),), initializer=tqdm.set_lock) as pool:
-        results = pool.starmap(func, zip(files, outputs, augment, range(len(LAKH_SPLITS))))
+        results = pool.starmap(func, zip(files, outputs, augment, range(len(POP909_SPLITS))))
 
     seq_count, rest_count, too_short, too_long, too_manyinstr, discarded_seqs, truncations \
             = (sum(x) for x in zip(*results))
