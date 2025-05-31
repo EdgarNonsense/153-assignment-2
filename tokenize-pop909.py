@@ -23,6 +23,10 @@ def main(args):
     print(f'  min track length = {MIN_TRACK_TIME_IN_SECONDS}s')
     print(f'  min track events = {MIN_TRACK_EVENTS}')
 
+    POP909_SPLITS = ['train', 'test', 'validate']
+    POP909_VALID = ['validate']
+    POP909_TEST = ['test']
+    
     paths = [os.path.join(args.datadir, s) for s in POP909_SPLITS]
     files = [glob(f'{p}/*.compound.txt') for p in paths]
     outputs = [os.path.join(args.datadir, f'tokenized-events-{s}.txt') for s in POP909_SPLITS]
