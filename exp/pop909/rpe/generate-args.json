@@ -1,0 +1,1 @@
+{"dataset": "pop909", "names": "data/pop909/processed/test-names.txt", "in_dir": "data/pop909/processed/notes", "out_dir": "/content/153-assignment-2/exp/pop909/rpe", "n_samples": 50, "shuffle": false, "use_csv": false, "model_steps": null, "seq_len": 1024, "temperature": 1.0, "filter": "top_k", "filter_threshold": 0.9, "gpu": 0, "jobs": 1, "quiet": false}
