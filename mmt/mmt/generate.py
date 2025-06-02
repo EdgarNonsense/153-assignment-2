@@ -133,8 +133,7 @@ def save_result(filename, data, sample_dir, encoding):
 
     # Save as a WAV file
     music.write(
-        sample_dir / "wav" / f"{filename}.wav",
-        options="-o synth.polyphony=4096",
+        sample_dir / "wav" / f"{filename}.wav"
     )
 
     # Save also as a MP3 file
@@ -156,7 +155,6 @@ def save_result(filename, data, sample_dir, encoding):
     # Save as a WAV file
     music.write(
         sample_dir / "wav-trimmed" / f"{filename}.wav",
-        options="-o synth.polyphony=4096",
     )
 
     # Save also as a MP3 file
