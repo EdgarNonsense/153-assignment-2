@@ -1,0 +1,62 @@
+Running command: python mmt/mmt/train.py -d pop909 -o exp/pop909/npe --no-abs_pos_emb --no-rel_pos_emb -g 0 --steps 10000
+Using arguments:
+{'abs_pos_emb': False,
+ 'aug': True,
+ 'batch_size': 8,
+ 'dataset': 'pop909',
+ 'dim': 512,
+ 'dropout': 0.2,
+ 'early_stopping': True,
+ 'early_stopping_tolerance': 20,
+ 'gpu': 0,
+ 'grad_norm_clip': 1.0,
+ 'heads': 8,
+ 'in_dir': PosixPath('data/pop909/processed/notes'),
+ 'jobs': 4,
+ 'layers': 6,
+ 'learning_rate': 0.0005,
+ 'lr_decay_multiplier': 0.1,
+ 'lr_decay_steps': 100000,
+ 'lr_warmup_steps': 5000,
+ 'max_beat': 256,
+ 'max_seq_len': 1024,
+ 'out_dir': PosixPath('/content/153-assignment-2/exp/pop909/npe'),
+ 'quiet': False,
+ 'rel_pos_emb': False,
+ 'steps': 10000,
+ 'train_names': PosixPath('data/pop909/processed/train-names.txt'),
+ 'use_csv': False,
+ 'valid_names': PosixPath('data/pop909/processed/valid-names.txt'),
+ 'valid_steps': 1000}
+Saved arguments to /content/153-assignment-2/exp/pop909/npe/train-args.json
+Using device: cuda:0
+Creating the data loader...
+Creating model...
+Number of parameters: 19417590
+Number of trainable parameters: 19417590
+Training...
+Validating...
+Validation loss: 6.7054
+Individual losses: type=0.0026, beat: 0.0944, position: 0.2107, pitch: 0.7175, duration: 0.6479, instrument: 0.0031
+Saved the model to: /content/153-assignment-2/exp/pop909/npe/checkpoints/model_1000.pt
+Training...
+Validating...
+Validation loss: 5.8887
+Individual losses: type=0.0015, beat: 0.0744, position: 0.1833, pitch: 0.5880, duration: 0.6235, instrument: 0.0015
+Saved the model to: /content/153-assignment-2/exp/pop909/npe/checkpoints/model_2000.pt
+Training...
+Validating...
+Validation loss: 5.1129
+Individual losses: type=0.0014, beat: 0.0622, position: 0.1539, pitch: 0.4843, duration: 0.5750, instrument: 0.0014
+Saved the model to: /content/153-assignment-2/exp/pop909/npe/checkpoints/model_3000.pt
+Training...
+Validating...
+Validation loss: 4.0820
+Individual losses: type=0.0015, beat: 0.0515, position: 0.1235, pitch: 0.3744, duration: 0.4682, instrument: 0.0014
+Saved the model to: /content/153-assignment-2/exp/pop909/npe/checkpoints/model_4000.pt
+Training...
+Validating...
+Validation loss: 3.8156
+Individual losses: type=0.0014, beat: 0.0468, position: 0.1125, pitch: 0.3469, duration: 0.4450, instrument: 0.0014
+Saved the model to: /content/153-assignment-2/exp/pop909/npe/checkpoints/model_5000.pt
+Training...
